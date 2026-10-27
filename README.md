@@ -1,6 +1,6 @@
 # Game Trailers
 
-Gameplay trailers for three small browser games: Neon Lanes, Galewarden and Hazard Pay.
+Gameplay trailers for small browser games: Neon Lanes, Galewarden, Hazard Pay and Sunset Ridge Time Trial.
 
 Each trailer comes in two formats: vertical (9:16) for phones and landscape (16:9) for desktop.
 
@@ -15,6 +15,16 @@ The latest release, [Trailers preview 1](https://github.com/mjyoke1111/game-trai
 | Neon Lanes | `neon-lanes-trailer-vertical.mp4` | `neon-lanes-trailer-landscape.mp4` |
 | Galewarden | `galewarden-trailer-vertical.mp4` | `galewarden-trailer-landscape.mp4` |
 | Hazard Pay | `hazard-pay-trailer-vertical.mp4` | `hazard-pay-trailer-landscape.mp4` |
+
+## Next release (draft)
+
+**Trailers preview 2** is a draft release (not published yet). It adds Sunset Ridge Time Trial:
+
+| Game | Vertical (9:16) | Landscape (16:9) |
+|---|---|---|
+| Sunset Ridge Time Trial | `sunset-ridge-time-trial-trailer-vertical.mp4` | `sunset-ridge-time-trial-trailer-landscape.mp4` |
+
+Each new trailer comes with the spec that rendered it in [`specs/`](specs/) and its upload metadata (title, description, tags, sizes and sha256 digests) in [`metadata/`](metadata/).
 
 ## Install
 

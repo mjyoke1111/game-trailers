@@ -1,0 +1,69 @@
+# Sunset Ridge Time Trial - trailer (game-trailers, same pipeline and look as trailers-preview-1).
+# Render with the silo-video pipeline:  python -m silo_video build specs/sunset-ridge-time-trial-trailer.yaml --no-vo
+# (SILO_GAMES_ROOT = an ai-game-studios checkout at 53a1f7ff; capture ran one shot per browser at a time.)
+# Footage: games/sunset-ridge-time-trial in ai-game-studios, unmodified. The game's own in-engine intro (default URL,
+# fresh profile) and its own deterministic autopilot (?bot, used by the game's headless checks) driving real races in
+# three events: Golden Hour, Clean Lines and Ridge Marathon. Graphics forced to High (?q=high).
+id: sunset-ridge-time-trial-trailer
+title: SUNSET RIDGE
+fps: 30
+duration_target: 21
+formats: [vertical, landscape]
+
+source:
+  type: game_capture
+  games_root: ${SILO_GAMES_ROOT:-../ai-game-studios}
+  url: games/sunset-ridge-time-trial/?nointro&nocd&unlock&bot&q=high
+  ready_js: "!!(window.SRG && document.querySelector('[data-a=race]'))"
+  capture:
+    vertical:  {viewport: [720, 1280], mobile: false}
+    landscape: {viewport: [1280, 720], mobile: false}
+  css: ".srx-pausebtn {display: none !important}"
+  shots:
+    - {id: intro, seconds: 4, url: "games/sunset-ridge-time-trial/?q=high"}
+    - {id: gold, seconds: 5, warm: 9, setup: "SRG.selectEvent('tt'); document.querySelector('[data-a=race]').click();"}
+    - {id: clean, seconds: 5, warm: 20, setup: "SRG.selectEvent('clean'); document.querySelector('[data-a=race]').click();"}
+    - {id: marathon, seconds: 5, warm: 30, setup: "SRG.selectEvent('marathon'); document.querySelector('[data-a=race]').click();"}
+    - {id: launch, seconds: 6, warm: 1, setup: "SRG.selectEvent('tt'); document.querySelector('[data-a=race]').click();"}
+
+# The edit: every cut on the 103.4 bpm grid of the game's own drive theme (one bar = 2.322 s). Notes say what is on screen.
+edit:
+  - {shot: intro, in: 0.0, dur: 2.322}                #  0.00  the game's own SUNSET RIDGE splash (vertical: the start gantry fly-in)
+  - {shot: launch, in: 0.3, dur: 2.322}               #  2.32  race start from the grid, Golden Hour
+  - {shot: gold, in: 0.0, dur: 2.322}                 #  4.64  Golden Hour: sun low over the ridge, at speed
+  - {shot: clean, in: 0.0, dur: 2.322}                #  6.97  Clean Lines: dusk sky, chevron boards on a sharp bend
+  - {shot: marathon, in: 0.0, dur: 2.322}             #  9.29  Ridge Marathon: night, on headlights
+  - {shot: gold, in: 2.5, dur: 2.322}                 # 11.61  Golden Hour: through the pines
+  - {shot: clean, in: 2.6, dur: 2.322}                # 13.93  Clean Lines: dusk
+  - {shot: marathon, in: 2.6, dur: 2.322}             # 16.25  Ridge Marathon: night
+  - {shot: launch, in: 2.5, dur: 3.483, card: end}    # 18.58  end card over the Golden Hour opening lap
+
+text_beats:
+  - {at: 2.5, dur: 2.0, text: "Three laps. One mountain road."}
+  - {at: 4.85, dur: 2.0, text: "Chase the last of the sun."}
+  - {at: 7.15, dur: 2.0, text: "Keep it off the grass."}
+  - {at: 9.45, dur: 2.0, text: "Race on into the night."}
+  - {at: 11.8, dur: 2.0, text: "Every checkpoint is a split."}
+  - {at: 14.1, dur: 2.0, text: "Every tenth counts."}
+
+cards:
+  end:
+    title: SUNSET RIDGE
+    lines: ["A time trial at golden hour.", "Play free in your browser"]
+    byline: AI Game Studio
+
+music:
+  path: ${SILO_GAMES_ROOT:-../ai-game-studios}/games/sunset-ridge-time-trial/audio/sr_drive.mp3   # the game's own theme, CC0 (see the game's LICENSES.md)
+  start: 5.2                 # seconds into the track: skips the quiet intro so the edit opens on the groove
+  fade_out: 2.0
+
+captions:
+  style: plain
+  max_words: 6
+  # the car sits low and the HUD on top: vertical captions go into the sky band under the timers
+  position: {vertical: [540, 640]}
+
+output:
+  dir: ${SILO_OUT:-out}/sunset-ridge-time-trial-trailer
+  loudness_lufs: -14
+  true_peak_db: -1.5
