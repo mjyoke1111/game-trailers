@@ -1,0 +1,38 @@
+# Upload-ready metadata for the Sunset Ridge Time Trial trailer.
+# The mp4 files ride the DRAFT release trailers-preview-2 (this repo keeps videos on releases, not in git).
+# Check a download with: sha256sum -c against the values below.
+id: sunset-ridge-time-trial-trailer
+game: Sunset Ridge Time Trial
+game_url: https://games.mjyoke1111.biz.id/games/sunset-ridge-time-trial/
+channel: coding
+title: "Sunset Ridge Time Trial - Gameplay Trailer"
+description: |
+  Three laps of a mountain road at golden hour, racing your own best time. Sunset Ridge Time Trial is a free
+  browser racing game: drift through the bends, hit every checkpoint split and race on from dusk into the night.
+  Every shot is real gameplay captured in the browser, cut to the game's own drive theme.
+  Play free: https://games.mjyoke1111.biz.id/games/sunset-ridge-time-trial/
+tags: [sunset ridge, time trial, racing game, browser game, html5 game, indie game, gameplay trailer, free game, web game, game dev]
+spec: specs/sunset-ridge-time-trial-trailer.yaml
+release: trailers-preview-2   # draft; published by the release owner
+files:
+  - name: sunset-ridge-time-trial-trailer-vertical.mp4
+    format: vertical (9:16)
+    resolution: 1080x1920
+    duration_s: 22.067
+    bytes: 18827984
+    sha256: 7b8cd3fe810837281d631eea51ba1a56695c7e1f1f227c1cdbf8ba290168346f
+  - name: sunset-ridge-time-trial-trailer-landscape.mp4
+    format: landscape (16:9)
+    resolution: 1920x1080
+    duration_s: 22.067
+    bytes: 20717472
+    sha256: 293b9bdb15f3013911b4a9290a3ef9dd4c54ab3e50183f99a79d842d84cc227f
+measured:   # both files: H.264 yuv420p 30 fps, AAC 48 kHz stereo
+  integrated_lufs: -14.02
+  true_peak_dbtp: -2.37
+  loudness_range_lu: 3.8
+  silences_over_0_4s_below_-35db: none
+credits:
+  footage: Sunset Ridge Time Trial (ai-game-studios), captured unmodified in headless Chromium; the game's own autopilot drives
+  music: the game's own drive theme (audio/sr_drive.mp3), CC0 1.0 per the game's LICENSES.md
+  fonts: as in the silo-video pipeline (SIL Open Font License 1.1)
