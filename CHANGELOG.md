@@ -2,6 +2,12 @@
 
 Built from this repository's GitHub releases.
 
+## Unreleased: trailers-preview-3 (draft)
+
+Trailers preview 3 (draft release, not published yet): gameplay trailer, MP4 (H.264).
+
+- Kanban Crew: vertical and landscape (23 s), spec in `specs/`, upload metadata in `metadata/`
+
 ## Unreleased: trailers-preview-2 (draft)
 
 Trailers preview 2 (draft release, not published yet): gameplay trailer, MP4 (H.264).

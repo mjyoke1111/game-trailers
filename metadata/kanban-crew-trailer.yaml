@@ -1,0 +1,38 @@
+# Upload-ready metadata for the Kanban Crew trailer.
+# The mp4 files ride the DRAFT release trailers-preview-3 (this repo keeps videos on releases, not in git).
+# Check a download with: sha256sum -c against the values below.
+id: kanban-crew-trailer
+game: Kanban Crew
+game_url: https://games.mjyoke1111.biz.id/games/kanban-crew/
+channel: coding
+title: "Kanban Crew - Gameplay Trailer"
+description: |
+  Six tiny workers, one kanban board and a single coffee machine. Kanban Crew is a free browser office sim: drag client
+  requests onto the board, unstick workers who get stuck, hire when the work piles up and hit the day's goal before
+  sundown. Every shot is real gameplay captured in the browser, cut to the game's own working groove.
+  Play free: https://games.mjyoke1111.biz.id/games/kanban-crew/
+tags: [kanban crew, kanban, office sim, management game, pixel art, browser game, html5 game, indie game, gameplay trailer, free game, web game, game dev]
+spec: specs/kanban-crew-trailer.yaml
+release: trailers-preview-3   # draft; published by the release owner
+files:
+  - name: kanban-crew-trailer-vertical.mp4
+    format: vertical (9:16)
+    resolution: 1080x1920
+    duration_s: 22.572
+    bytes: 6427436
+    sha256: 3eb62ff44b00e43b0d7774e162ca2ebd03080a825e659a3453b99925e2bfb111
+  - name: kanban-crew-trailer-landscape.mp4
+    format: landscape (16:9)
+    resolution: 1920x1080
+    duration_s: 22.572
+    bytes: 7463776
+    sha256: 3be1844a9dec20ad35ebcaf83bc91157b58e9c3aaf1d628c8e2a3f3575822893
+measured:   # both files: H.264 yuv420p 30 fps, AAC 48 kHz stereo
+  integrated_lufs: -14.03
+  true_peak_dbtp: -2.53
+  loudness_range_lu: 3.4
+  silences_over_0_4s_below_-35db: none
+credits:
+  footage: Kanban Crew (ai-game-studios), captured unmodified in headless Chromium; the game's own intro and its own test bot playing a work day
+  music: the game's own working groove (audio/music_work.mp3), made for the game per its CREDITS.md
+  fonts: as in the silo-video pipeline (SIL Open Font License 1.1)

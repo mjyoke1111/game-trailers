@@ -1,0 +1,76 @@
+# Kanban Crew - trailer (game-trailers, same pipeline and look as trailers-preview-1 and -2).
+# Render with the silo-video pipeline:  python -m silo_video build specs/kanban-crew-trailer.yaml --no-vo
+# (SILO_GAMES_ROOT = the games tree of the ai-game-studios `site` branch at d4414d7b, i.e. <checkout>/tree, which is the
+# live build; capture ran one shot per browser at a time.)
+# Footage: games/kanban-crew, unmodified. The game's own in-engine intro (default URL, fresh profile, cover tapped) and
+# real work days played by the game's own test bot (window.__kc.config({seed, bot}) then __kc.start(), the hooks the
+# game's headless checks use): the bot accepts every client request and unsticks stuck workers.
+id: kanban-crew-trailer
+title: KANBAN CREW
+fps: 30
+duration_target: 23
+formats: [vertical, landscape]
+
+source:
+  type: game_capture
+  games_root: ${SILO_GAMES_ROOT:-../ai-game-studios}
+  url: games/kanban-crew/
+  ready_js: "!!(window.__kc && document.getElementById('ovCover') && document.getElementById('bStart'))"
+  capture:
+    vertical:  {viewport: [720, 1280], mobile: true}
+    landscape: {viewport: [1280, 720], mobile: false}
+  shots:
+    - {id: intro, seconds: 16.2, setup: "document.getElementById('ovCover').click();"}
+    - id: morning
+      seconds: 6
+      warm: 6
+      setup: &day "localStorage.setItem('kanbancrew.introSeen','1'); document.getElementById('ovCover').click(); window.__kc.skipIntro(); window.__t0 = performance.now();"
+      tick: &go "if (!window.__st && performance.now() - window.__t0 > 700) { window.__kc.config({seed: 7, bot: true}); window.__kc.start(); window.__st = 1; }"
+    - id: hire
+      seconds: 6
+      warm: 30
+      setup: *day
+      tick: "if (!window.__st && performance.now() - window.__t0 > 700) { window.__kc.config({seed: 7, bot: true}); window.__kc.start(); window.__st = 1; } if (i === 15) document.getElementById('bHire').click();"
+    - {id: busy, seconds: 6, warm: 60, setup: *day, tick: *go}
+    - {id: dusk, seconds: 6, warm: 135, setup: *day, tick: *go}
+    - {id: dayend, seconds: 8, warm: 175, setup: *day, tick: *go}
+
+# The edit: every cut on the bar grid of the game's own working groove (87.7 bpm, one bar = 2.736 s). Notes say what is on screen.
+edit:
+  - {shot: intro, in: 0.3, dur: 2.736}                #  0.00  the game's own intro: 9:00 AM, the crew walks in
+  - {shot: morning, in: 0.5, dur: 2.736}              #  2.74  day 1 starts: requests land, cards move to DOING
+  - {shot: hire, in: 0.0, dur: 2.736}                 #  5.47  HIRE: a new worker walks in through the door
+  - {shot: busy, in: 0.5, dur: 2.736}                 #  8.21  mid-morning: every desk typing, the throughput chart climbs
+  - {shot: intro, in: 12.7, dur: 2.736}               # 10.94  the game's own intro: pull-back to the KANBAN CREW logo
+  - {shot: dusk, in: 0.5, dur: 2.736}                 # 13.68  late afternoon: dusk light through the window
+  - {shot: dayend, in: 4.4, dur: 2.736}               # 16.42  the last minutes of the day, then the DAY 1 DONE report
+  - {shot: hire, in: 2.55, dur: 3.420, card: end}     # 19.15  end card over the busy office
+
+text_beats:
+  - {at: 2.9, dur: 2.4, text: "Six tiny workers. One board."}
+  - {at: 5.65, dur: 2.4, text: "Short-handed? Hire another."}
+  - {at: 8.4, dur: 2.4, text: "Unstick them. Keep it moving."}
+  - {at: 13.85, dur: 2.4, text: "Ship it before sundown."}
+  - {at: 16.6, dur: 2.4, text: "Hit the goal. Open tomorrow."}
+
+cards:
+  end:
+    title: KANBAN CREW
+    lines: ["A tiny office, one busy board.", "Play free in your browser"]
+    byline: AI Game Studio
+
+music:
+  path: ${SILO_GAMES_ROOT:-../ai-game-studios}/games/kanban-crew/audio/music_work.mp3   # the game's own working groove (see the game's CREDITS.md)
+  start: 2.896               # seconds into the track: bar 2 on the beat, past the lighter first bar
+  fade_out: 2.0
+
+captions:
+  style: plain
+  max_words: 6
+  # vertical: the office sits on top and the HUD under it; captions go on the lower half of the kanban board, clear of the day report box
+  position: {vertical: [540, 1290]}
+
+output:
+  dir: ${SILO_OUT:-out}/kanban-crew-trailer
+  loudness_lufs: -14
+  true_peak_db: -1.5
