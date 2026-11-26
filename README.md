@@ -1,6 +1,13 @@
+<p align="center">
+  <img src="docs/banner.svg" alt="Game Trailers — Vertical and landscape gameplay trailers" width="100%">
+</p>
+
 # Game Trailers
 
 Gameplay trailers for small browser games: Neon Lanes, Galewarden, Hazard Pay, Sunset Ridge Time Trial and Kanban Crew.
+
+<a href="LICENSE"><img alt="licence: Apache-2.0" src="https://img.shields.io/badge/licence-Apache--2.0-7fd3b4?style=flat-square"></a>
+<a href="https://github.com/mjyoke1111/game-trailers/releases"><img alt="GitHub Release" src="https://img.shields.io/github/v/release/mjyoke1111/game-trailers?style=flat-square&color=58a6ff"></a>
 
 Each trailer comes in two formats: vertical (9:16) for phones and landscape (16:9) for desktop.
 
@@ -50,3 +57,8 @@ Nothing to install. The trailers are plain MP4 files that play in any modern bro
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how the repository and its releases are organised.
 - [CHANGELOG.md](CHANGELOG.md): release history.
+- [SECURITY.md](SECURITY.md): vulnerability reporting policy.
+
+## Licence
+
+Licensed under the [Apache License, Version 2.0](LICENSE). Copyright 2026 mjyoke1111.

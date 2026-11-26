@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title desc">
+  <title id="title">Game Trailers — Vertical and landscape gameplay trailers for AI Game Studio releases</title>
+  <desc id="desc">Banner showing vertical 9:16 and landscape 16:9 video frames for Game Trailers.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f151d"/>
+      <stop offset="1" stop-color="#1b2634"/>
+    </linearGradient>
+    <linearGradient id="ac" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#78bcb2"/>
+      <stop offset="1" stop-color="#58a6ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="320" fill="url(#bg)"/>
+  <text x="68" y="74" font-family="DejaVu Sans, Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="3" fill="#78bcb2">AI GAME STUDIO / RELEASE MEDIA</text>
+  <text x="66" y="148" font-family="DejaVu Serif, Georgia, serif" font-size="60" fill="#f0f3f4">Game Trailers</text>
+  <text x="68" y="198" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" fill="#a2b0bd">H.264 MP4 gameplay trailers in 9:16 vertical and 16:9 landscape.</text>
+  <text x="68" y="246" font-family="DejaVu Sans Mono, monospace" font-size="15" fill="#78bcb2">Neon Lanes · Galewarden · Hazard Pay · Sunset Ridge · Kanban Crew</text>
+
+  <!-- 16:9 + 9:16 video frame icons -->
+  <g transform="translate(880, 56)">
+    <rect x="0" y="34" width="220" height="124" rx="12" fill="#131c26" stroke="url(#ac)" stroke-width="2.5"/>
+    <polygon points="96,76 96,116 130,96" fill="#78bcb2"/>
+    <text x="110" y="182" font-family="DejaVu Sans Mono, monospace" font-size="13" fill="#8fa0af" text-anchor="middle">16:9 landscape</text>
+
+    <rect x="248" y="12" width="94" height="168" rx="12" fill="#131c26" stroke="#58a6ff" stroke-width="2.5"/>
+    <polygon points="286,78 286,114 314,96" fill="#58a6ff"/>
+    <text x="295" y="204" font-family="DejaVu Sans Mono, monospace" font-size="13" fill="#8fa0af" text-anchor="middle">9:16 vertical</text>
+  </g>
+</svg>
